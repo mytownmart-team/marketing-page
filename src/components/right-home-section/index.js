@@ -8,10 +8,10 @@ export const RightHomeSection = () => {
         <img src={"/images/ellipse-2.png"} alt="Ellipse 2" />
       </div>
       <div className="absolute right-0 top-0">
-        <img src={"/images/image-1.png"} alt="Image 1" />
+        <img src={"/images/image-1.png"} alt="background 1" />
       </div>
       <div className="absolute top-[210px] right-0">
-        <img src={"/images/image-2.png"} alt="Image 2" />
+        <img src={"/images/image-2.png"} alt="background 2" />
       </div>
     </section>
   );

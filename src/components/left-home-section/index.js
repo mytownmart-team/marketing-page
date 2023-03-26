@@ -239,7 +239,7 @@ export const LeftHomeSection = () => {
           <div className="mt-10 rounded-full border-2 border-primary flex items-center px-12 py-5 gap-12 w-fit">
             {Icons.map((Icon, idx) => {
               return (
-                <a href={links[idx]} target="_blank">
+                <a href={links[idx]} target="_blank" rel="noreferrer">
                   <Icon className="hover:opacity-80" />
                 </a>
               );
