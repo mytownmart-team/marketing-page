@@ -123,8 +123,7 @@ export const LeftHomeSection = () => {
                       icon={PhoneIcon}
                       label="Phone (optional)"
                       placeholder="080..."
-                      formExtra={{ ...register("phone", { required: true }) }}
-                      error={errors?.phone ? "Phone is required" : ""}
+                      formExtra={{ ...register("phone") }}
                     />
                     <div className="flex-1" />
                   </div>
@@ -203,15 +202,15 @@ export const LeftHomeSection = () => {
             Bye Bye 👋🏼
           </h2>
           <h2 className="text-4xl md:text-6xl font-bold text-secondary">
-            to market wahala
+            To Market Wahala
           </h2>
           <div className=" mb-8 max-w-lg mt-10">
             <p className="text-foreground mb-1">
               Order your food items/Groceries from the comfort of your home
             </p>
             <p className="text-foreground">
-              Signup to be among the first 1000 in Abuja to know when we launch
-              and enjoy
+              Be among the first 1000 persons to know when we launch and get 10%
+              discount
             </p>
           </div>
           <div className="border border-[#5D6B6B38]  p-1 flex justify-between gap-2 mb-10 rounded-md">
