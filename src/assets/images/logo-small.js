@@ -7,7 +7,7 @@ export const LogoSmall = (props) => {
       viewBox="0 0 90 59"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      xmlnXlink="http://www.w3.org/1999/xlink"
+      xmlnxlink="http://www.w3.org/1999/xlink"
     >
       <rect width="89.5" height="58.6012" fill="url(#pattern0)" />
       <defs>

@@ -13,15 +13,15 @@ export const CloseIcon = (props) => {
         cy="20"
         r="19.5"
         fill="white"
-        fill-opacity="0.08"
+        fillOpacity="0.08"
         stroke="#727272"
       />
       <path
         d="M20 20L25 25M15 15L20 20L15 15ZM20 20L25 15L20 20ZM20 20L15 25L20 20Z"
         stroke="#727272"
-        stroke-width="1.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

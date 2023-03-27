@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { baseURL } from "../../config/baseURL";
 import { OpenedMailIcon } from "../../assets/icons/opened-mail";
+import cn from "classnames";
 
 const Icons = [
   // TwitterIcon,
@@ -44,11 +45,15 @@ export const LeftHomeSection = () => {
     successModalISOpen,
     openSuccessModal,
     closeSuccessModal,
+    errors: BEError,
+    setErrors,
+    closeErrorMessage,
   } = useLeftHomeSection();
 
   const onSubmit = async (values) => {
     try {
       setIsLoading(true);
+      setErrors([]);
       const { data } = await axios.post(`${baseURL}/marketing`, values);
       console.log(data);
       handleCloseAccessModal();
@@ -56,6 +61,7 @@ export const LeftHomeSection = () => {
       setValue({});
     } catch (error) {
       console.log(error);
+      setErrors(error?.response?.data?.error?.message || [error.message]);
     } finally {
       setIsLoading(false);
     }
@@ -66,10 +72,10 @@ export const LeftHomeSection = () => {
       {accessModalIsOpen && (
         <div
           onClick={handleCloseAccessModal}
-          className=" fixed top-0 left-0 h-screen w-screen bg-[rgba(0,0,0,0.24)] z-50 flex justify-center items-center px-[10vw]"
+          className=" fixed top-0 left-0 h-screen w-screen bg-[rgba(0,0,0,0.24)] z-50 flex justify-center items-center px-[10vw] ]"
         >
           <div
-            className="bg-white rounded-2xl w-full max-w-[588px]"
+            className="bg-white rounded-2xl w-full max-w-[588px] max-h-[80vh] overflow-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <header className="px-6 py-8 bg-[#F6F6F6] flex justify-between items-center">
@@ -83,6 +89,17 @@ export const LeftHomeSection = () => {
                 />
               </div>
             </header>
+            {BEError.length !== 0 && (
+              <div className=" text-center mt-2 text-xs text-red-500 p-4 bg-red-100 mx-5 relative">
+                {BEError.map((error, idx) => (
+                  <p key={idx}> {error}</p>
+                ))}
+
+                <div className="absolute h-full right-5 flex top-3 text-base hover:opacity-60 cursor-pointer">
+                  <p onClick={closeErrorMessage}>X</p>
+                </div>
+              </div>
+            )}
 
             <div className="px-6 py-10">
               <form onSubmit={handleSubmit(onSubmit)} noValidate>
@@ -132,7 +149,9 @@ export const LeftHomeSection = () => {
                   <Button
                     disabled={isLoading}
                     type="submit"
-                    className="md:px-16 md:py-5"
+                    className={cn("md:px-16 md:py-5", {
+                      "opacity-60": isLoading,
+                    })}
                   >
                     <p className=" text-sm md:text-xl">
                       {isLoading ? "Adding to list" : "Gain Access"}
@@ -238,7 +257,7 @@ export const LeftHomeSection = () => {
           <div className="mt-10 rounded-full border-2 border-primary flex items-center px-12 py-5 gap-12 w-fit">
             {Icons.map((Icon, idx) => {
               return (
-                <a href={links[idx]} target="_blank" rel="noreferrer">
+                <a key={idx} href={links[idx]} target="_blank" rel="noreferrer">
                   <Icon className="hover:opacity-80" />
                 </a>
               );

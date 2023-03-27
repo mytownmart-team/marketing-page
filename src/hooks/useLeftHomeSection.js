@@ -5,6 +5,8 @@ export function useLeftHomeSection() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [value, setValue] = useState({});
+  const [errors, setErrors] = useState([]);
+
   // console.log(searchParams.get("modal"));
 
   const [accessModalIsOpen, setAccessModalIsOpen] = useState(
@@ -23,6 +25,7 @@ export function useLeftHomeSection() {
     setSearchParams();
     setAccessModalIsOpen(false);
   };
+  const closeErrorMessage = () => setErrors([]);
 
   return {
     accessModalIsOpen,
@@ -35,5 +38,8 @@ export function useLeftHomeSection() {
     successModalISOpen,
     openSuccessModal,
     closeSuccessModal,
+    errors,
+    setErrors,
+    closeErrorMessage,
   };
 }
