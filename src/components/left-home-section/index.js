@@ -54,6 +54,9 @@ export const LeftHomeSection = () => {
     try {
       setIsLoading(true);
       setErrors([]);
+      if (!values.phone) {
+        delete values.phone;
+      }
       const { data } = await axios.post(`${baseURL}/marketing`, values);
       console.log(data);
       handleCloseAccessModal();
